@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Left, Body, Right, Button, Icon, Title, Container, Header, Content, Accordion } from "native-base";
+import { Left, Body, Right, Button, Icon, Title, Container, Header, Content, Accordion, Text } from "native-base";
 import { FixedLabelExample } from './euvOpt';
 
 const dataArray = [
@@ -19,7 +19,7 @@ class AccordionExample extends Component {
 
   render() {
     return (
-      <Container>
+      <Container style={{paddingBottom: 0}}>
         <Content padder>
           <Accordion dataArray={dataArray} expanded={0} renderContent={this._renderContent} />
         </Content>
@@ -31,13 +31,13 @@ class AccordionExample extends Component {
 class HeaderIconExample extends Component {
   render() {
     return (
-        <Header>
+        <Header style={{paddingTop: 15}}>
           <Left>
             <Button transparent>
               <Icon name='arrow-back' />
             </Button>
           </Left>
-          <Body>
+          <Body style={{alignItems: "center", justifyContent:"center"}}>
             <Title>EUV</Title>
           </Body>
           <Right>
@@ -50,7 +50,21 @@ class HeaderIconExample extends Component {
   }
 }
 
+class Save extends Component {
+  render() {
+    return (
+      <Container style={{alignItems: "center", justifyContent:"center"}}>
+        <Content>
+          <Button rounded light>
+            <Text>Save</Text>
+          </Button>
+        </Content>
+      </Container>
+    );
+  }
+}
+
 
 module.exports = {
-  HeaderIconExample, AccordionExample 
+  HeaderIconExample, AccordionExample, Save
 }

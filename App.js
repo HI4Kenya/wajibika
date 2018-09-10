@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Container } from 'native-base';
 import { Font, Apploading } from 'expo';
 
-import { AccordionExample, HeaderIconExample } from './src/pages/euv';
+import { AccordionExample, HeaderIconExample, Save } from './src/pages/euv/euv';
 
 export default class App extends React.Component {
   constructor (props) {
@@ -29,6 +29,7 @@ export default class App extends React.Component {
       <Container>
         <HeaderIconExample />
         <AccordionExample />
+        <Save />
         
       </Container>
       
