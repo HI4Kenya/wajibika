@@ -67,10 +67,6 @@ class FixedLabelExample extends Component {
               <Label>Quantity Entered on Bin Card</Label>
               <Input />
             </Item>
-            <Item floatingLabel>
-              <Label>Score</Label>
-              <Input />
-            </Item>
           </Form>
       </Container>
     );
