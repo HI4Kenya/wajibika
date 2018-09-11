@@ -2,19 +2,23 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { Button } from 'native-base'
 
-class HomeScreen extends Component {
+class EuvScreen extends Component {
+  static navigationOptions = {
+    title: 'EUV'
+  }
 
   render () {
     const { navigate } = this.props.navigation
+
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Home!</Text>
-        <Button bordered onPress={() => navigate('Euv')} >
+        <Text>EUV</Text>
+        <Button bordered onPress={() => navigate('Home')} >
           <Text>Get Started</Text>
         </Button>
-      </View>
+      </View> 
     )
   }
 }
 
-export default HomeScreen
+export default EuvScreen
