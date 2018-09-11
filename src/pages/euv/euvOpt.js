@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Icon, Item, Input, Label, Picker } from 'native-base';
 
-import GenericPicker from '../components/GenericPicker'
+import GenericPicker from '../components/GenericPicker';
+import GenericPicker from '../components/AppInput';
+import GenericPicker from '../components/AppSelect';
 
 class FixedLabelExample extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class FixedLabelExample extends Component {
             </Item>
             
             {/* Reusing this component */}
-            <GenericPicker key={this.state.picker.index} options={this.state.picker.options} />
+            <GenericPicker options={this.state.picker.options} />
             
             
             <Item floatingLabel>
@@ -55,6 +57,33 @@ class FixedLabelExample extends Component {
   }
 }
 
+class Reuse extends Component {
+    state = {
+      input: '',
+      select: {},
+    };
+
+    render() {
+      const { input, select } = this.state;
+
+      return (
+        <View style={{ flex: 1, padding: 40 }}>
+          <AppInput
+            label="Name"
+            value={input}
+            onChange={input => this.setState({ input })}
+          />
+          <AppSelect
+            label="Country"
+            items={countries}
+            value={select}
+            onChange={select => this.setState({ select })}
+          />
+        </View>
+      );
+    }
+  }
+
 module.exports = {
-  FixedLabelExample
+  FixedLabelExample, Reuse
 }
