@@ -1,37 +1,13 @@
 import React from 'react';
+import { Component } from "react";
 import { StyleSheet, Text, View } from 'react-native';
-import { Container } from 'native-base';
-import { Font, Apploading } from 'expo';
 
-import { AccordionExample, HeaderIconExample } from './src/pages/euv';
+import LoginScreen from './src/pages/login/login.js'
 
-export default class App extends React.Component {
-  constructor (props) {
-    super (props);
-    this.state = { loading: true }
-  }
-
-  async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
-    })
-    this.setState({ loading: false })
-  }
+export default class App extends Component {
   render() {
-    if (this.state.loading) {
-      return (
-        null
-      );
-    }
-
     return (
-      <Container>
-        <HeaderIconExample />
-        <AccordionExample />
-        
-      </Container>
-      
+      <LoginScreen />
     );
   }
 }

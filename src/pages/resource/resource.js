@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Left, Body, Right, Button, Icon, Title, Container, Header, Content, Accordion } from "native-base";
-import { FixedLabelExample } from './euvOpt';
+import { FixedLabelExample } from './resourceOpt';
 
 const dataArray = [
-  { title: "AL 6", content: '' },
-  { title: "AL 24", content: "" },
-  { title: "DMPA", content: "" },
-  { title: "ORS/Zn Co pack", content: ""}
+  { title: "Current edition of the Kenya Malaria Treatment Guidelines", content: '' },
+  { title: "Good Dispensing Practices", content: "" },
+  { title: "Good Inventory Management Practice", content: "" },
+  { title: "Good Record Keeping Practices", content: ""},
+  { title: "Good Storage Practices", content: ""},
+  { title: "Medication Use Counselling", content: ""}
+  { title: "Medication Use Counselling", content: ""}
+  { title: "Medication Use Counselling", content: ""}
+  { title: "Medication Use Counselling", content: ""}
 ];
 
 class AccordionExample extends Component {
@@ -38,7 +43,7 @@ class HeaderIconExample extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>EUV</Title>
+            <Title>Resources and Reference Materials</Title>
           </Body>
           <Right>
             <Button transparent>
