@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Icon, Item, Input, Label, Picker } from 'native-base';
 
+import GenericPicker from '../components/GenericPicker'
+
 class FixedLabelExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected2: undefined
+      selected2: undefined,
+      picker: {
+        options: ['Select Option', 'Yes', 'No']
+      },
+      input: {
+        labels: []
+      }
     };
   }
 
@@ -16,15 +24,11 @@ class FixedLabelExample extends Component {
             <Item fixedLabel style={{paddingTop: 15}}>
               <Label>Items Received?</Label>
             </Item>
-              <Item dropdown>
-              <Picker
-                  selectedValue={this.state.answerno}
-                  style={{ height: 50, width: 50 }}
-                  onValueChange={(itemValue, itemIndex) => this.setState({answerno: itemValue})}>
-                  <Picker.Item label="No" value="key0" />
-                  <Picker.Item label="Yes" value="key1" />
-                </Picker>
-              </Item>
+            
+            {/* Reusing this component */}
+            <GenericPicker key={this.state.picker.index} options={this.state.picker.options} />
+            
+            
             <Item floatingLabel>
               <Label>Quantity Ordered</Label>
               <Input />
@@ -33,15 +37,10 @@ class FixedLabelExample extends Component {
               <Label>Delivery Note Available?</Label>
               <Input />
             </Item>
-            <Item dropdown>
-                <Picker
-                   selectedValue={this.state.answeryes}
-                   style={{ height: 50, width: 50 }}
-                   onValueChange={(itemValue, itemIndex) => this.setState({answeryes: itemValue})}>
-                   <Picker.Item label="No" value="key0" />
-                   <Picker.Item label="Yes" value="key1" />
-                </Picker>
-              </Item>
+
+            {/* Using Generic Picker */}
+            <GenericPicker options={this.state.picker.options} />
+
             <Item floatingLabel>
               <Label>Quantity Delivered</Label>
               <Input />
