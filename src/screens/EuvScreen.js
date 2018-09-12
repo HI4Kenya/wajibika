@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { Button } from 'native-base'
 
+const dataArray = [
+  { title: 'AL 6', content: '' },
+  { title: 'AL 24', content: '' },
+  { title: 'DMPA', content: '' },
+  { title: 'ORS/Zn Co pack', content: ''}
+];
+
+
 class EuvScreen extends Component {
   static navigationOptions = {
     title: 'EUV'
@@ -11,12 +19,7 @@ class EuvScreen extends Component {
     const { navigate } = this.props.navigation
 
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>EUV</Text>
-        <Button bordered onPress={() => navigate('Home')} >
-          <Text>Get Started</Text>
-        </Button>
-      </View> 
+      
     )
   }
 }

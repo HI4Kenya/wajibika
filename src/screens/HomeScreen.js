@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
-import { Button, StyleSheet } from 'react-native'
-import { Text, Content, Container } from "native-base";
+import { StyleSheet } from 'react-native'
+import { Button, Text, Content, Container } from 'native-base';
 
 class HomeScreen extends Component {
+  constructor(props) {
+    super (props)
+  }
 
   render () {
 
     const { navigate } = this.props.navigation
     const dataArray = [
-      'Facility Information',
-      'Human Resources',
-      'Storage Area',
-      'MIS Tools',
-      'EUV',
-      'Inventory Management',
-      'Resources'
+      { screen: 'Facility', title: 'Facility Information' },
+      { screen: 'HR', title: 'Human Resources' },
+      { screen: 'StorageArea', title: 'Storage Area' },
+      { screen: 'MisTools', title: 'MIS Tools' },
+      { screen: 'Euv', title: 'EUV' },
+      { screen: 'InvManagement', title: 'Inventory Management' },
+      { screen: 'Resources', title: 'Resources' },
     ]
 
     return (
@@ -24,9 +27,10 @@ class HomeScreen extends Component {
 
             {
               dataArray.map((item, index) => {
+                
                 return (
-                  <Button style={styles.mb15}>
-                    <Text>{item}</Text>
+                  <Button key={index} onPress={() => navigate(item.screen) } style={styles.mb15}>
+                    <Text>{item.title}</Text>
                   </Button>  
                 )
               })
