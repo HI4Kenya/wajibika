@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Container } from 'native-base';
 import { Font, Apploading } from 'expo';
 
-import { AccordionExample, HeaderIconExample, Save } from './src/pages/euv/euv';
+import {  HomeHeader, MenuBlocks } from './src/pages/homescreen';
 // import HeaderIconExample from './src/pages/pharmInv/pharmInv';
 
 export default class App extends React.Component {
@@ -28,9 +28,9 @@ export default class App extends React.Component {
 
     return (
       <Container>
-        <HeaderIconExample />
-        <AccordionExample />
-        <Save />
+        <HomeHeader />
+        <MenuBlocks />
+        
       
         
       </Container>
@@ -42,7 +42,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#05B2DC',
     alignItems: 'center',
     justifyContent: 'center',
   },
