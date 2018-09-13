@@ -19,7 +19,11 @@ class EuvScreen extends Component {
     const { navigate } = this.props.navigation
 
     return (
-      
+      <Container style={{paddingBottom: 0}}>
+        <Content padder>
+          <Accordion dataArray={dataArray} expanded={0} renderContent={this._renderContent} />
+        </Content>
+      </Container>
     )
   }
 }
