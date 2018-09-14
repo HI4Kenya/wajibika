@@ -9,6 +9,7 @@ import HomeScreen from './screens/HomeScreen'
 import StaffScreen from './screens/StaffScreen'
 import InventoryScreen from './screens/InventoryScreen'
 import StorageAreaScreen from './screens/StorageAreaScreen'
+import ResourcesScreen from './screens/ResourcesScreen'
 
 /**
  * Routes <Object>
@@ -57,6 +58,13 @@ const Routes = createStackNavigator(
       screen: StorageAreaScreen,
       navigationOptions: {
         headerTitle: 'Storage Area Assessment',
+        header: props => <GenericHeader {...props} />
+      }
+    },
+    Resources: {
+      screen: ResourcesScreen,
+      navigationOptions: {
+        headerTitle: 'Resources and References',
         header: props => <GenericHeader {...props} />
       }
     }
