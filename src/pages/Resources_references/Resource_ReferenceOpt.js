@@ -32,14 +32,14 @@ class FixedLabelExample extends Component {
             
             <Item fixedLabel style={{paddingTop: 15}}>
               <Label>Displayed Appropriately</Label>
-              <Input />
+              
             </Item>
             {/* Reusing this component */}
             <GenericPicker options={this.state.picker.options} />
 
             <Item fixedLabel style={{paddingTop: 15}}>
               <Label>Score?</Label>
-              <Input />
+              
             </Item>
 
             {/* Reusing this component */}

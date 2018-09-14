@@ -26,7 +26,7 @@ class HomeScreen extends Component {
               dataArray.map((item, index) => {
                 return (
                   <Button key={index} onPress={() => navigate(item.screen)} style={styles.mb15}>
-                    <Text>{item.titler}</Text>
+                    <Text>{item.title}</Text>
                   </Button>  
                 )
               })
