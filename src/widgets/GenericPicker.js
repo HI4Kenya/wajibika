@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Item, Picker } from 'react-native'
+import { Item, Picker } from 'native-base'
 
 class GenericPicker extends Component {
   constructor(props) {

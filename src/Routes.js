@@ -5,6 +5,7 @@ import EuvScreen from './screens/EuvScreen'
 import FacilityScreen from './screens/FacilityScreen'
 import HomeScreen from './screens/HomeScreen'
 import GenericHeader from './widgets/GenericHeader';
+import StaffScreen from './screens/StaffScreen';
 
 const Routes = createStackNavigator(
   {
@@ -29,6 +30,13 @@ const Routes = createStackNavigator(
         header: props => <GenericHeader {...props} />
       }
     },
+    HR: {
+      screen: StaffScreen,
+      navigationOptions: {
+        headerTitle: 'Pharmacy Human Resources',
+        header: props => <GenericHeader {...props} />
+      }
+    }
   },
   {
     initialRouteName: 'Home',

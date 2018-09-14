@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { Button, Text, Content, Container } from 'native-base';
+import { Button, Text, Container, View } from 'native-base';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -22,30 +22,19 @@ class HomeScreen extends Component {
 
     return (
       <Container>
-        <Content>
-          <Container style={{ padding:40}}>
-
-            {
-              dataArray.map((item, index) => {
-                
-                return (
-                  <Button key={index} onPress={() => navigate(item.screen) } style={styles.mb15}>
-                    <Text>{item.title}</Text>
-                  </Button>  
-                )
-              })
-            }
-
-            <Container style={styles.mbt20}>
-              <Button rounded success>
-                <Text>Upload</Text>
-              </Button>
-            </Container>
-          </Container>
-         
-        </Content>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' ,padding:40}}>
+          {
+            dataArray.map((item, index) => {
+              
+              return (
+                <Button block key={index} onPress={() => navigate(item.screen) } style={styles.mb15}>
+                  <Text>{item.title}</Text>
+                </Button>  
+              )
+            })
+          }
+        </View>
       </Container>
-
     )
   }
 }
