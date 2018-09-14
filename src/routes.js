@@ -5,6 +5,8 @@ import EuvScreen from './screens/EuvScreen'
 import HomeScreen from './screens/HomeScreen'
 import GenericHeader from './widgets/GenericHeader';
 
+import Resources from './pages/Resources_references/Resource_Reference'
+
 const Routes = createStackNavigator(
   {
     Home: {
@@ -18,6 +20,13 @@ const Routes = createStackNavigator(
       screen: EuvScreen,
       navigationOptions: {
         headerTitle: 'EUV',
+        header: props => <GenericHeader {...props} />
+      }
+    },
+    Resources: {
+      screen: Resources,
+      navigationOptions: {
+        headerTitle: 'Resources and Reference',
         header: props => <GenericHeader {...props} />
       }
     },
