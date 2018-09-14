@@ -1,12 +1,21 @@
 import React from 'react'
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation'
+
+import GenericHeader from './widgets/GenericHeader'
 
 import EuvScreen from './screens/EuvScreen'
 import FacilityScreen from './screens/FacilityScreen'
 import HomeScreen from './screens/HomeScreen'
-import GenericHeader from './widgets/GenericHeader';
-import StaffScreen from './screens/StaffScreen';
+import StaffScreen from './screens/StaffScreen'
+import InventoryScreen from './screens/InventoryScreen'
+import StorageAreaScreen from './screens/StorageAreaScreen'
 
+/**
+ * Routes <Object>
+ * 
+ * Defines all routes in the Main Stack
+ * Defines the main header [styling, title]
+ */
 const Routes = createStackNavigator(
   {
     Home: {
@@ -34,6 +43,20 @@ const Routes = createStackNavigator(
       screen: StaffScreen,
       navigationOptions: {
         headerTitle: 'Pharmacy Human Resources',
+        header: props => <GenericHeader {...props} />
+      }
+    },
+    Inventory: {
+      screen: InventoryScreen,
+      navigationOptions: {
+        headerTitle: 'Inventory Management',
+        header: props => <GenericHeader {...props} />
+      }
+    },
+    StorageArea: {
+      screen: StorageAreaScreen,
+      navigationOptions: {
+        headerTitle: 'Storage Area Assessment',
         header: props => <GenericHeader {...props} />
       }
     }
