@@ -1,49 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Container } from 'native-base';
-import { Font, Apploading } from 'expo';
+import React, { Component } from 'react';
+// import { Provider } from 'react-redux';
+import Routes from './src/Routes';
 
-import {  HomeHeader, MenuBlocks } from './src/pages/homescreen';
-// import HeaderIconExample from './src/pages/pharmInv/pharmInv';
+export default class App extends Component {
 
-export default class App extends React.Component {
-  constructor (props) {
-    super (props);
-    this.state = { loading: true }
-  }
-
-  async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
-    })
-    this.setState({ loading: false })
-  }
   render() {
-    if (this.state.loading) {
-      return (
-        null
-      );
-    }
-
-    return (
-      <Container>
-        <HomeHeader />
-        <MenuBlocks />
-        
-      
-        
-      </Container>
-      
-    );
+    /**
+     * Routes tag
+     * 
+     * Defines all screens in the main 'Stack'
+     */
+    return <Routes />
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#05B2DC',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
