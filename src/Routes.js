@@ -10,6 +10,7 @@ import StaffScreen from './screens/StaffScreen'
 import InventoryScreen from './screens/InventoryScreen'
 import StorageAreaScreen from './screens/StorageAreaScreen'
 import ResourcesScreen from './screens/ResourcesScreen'
+import MisScreen from './screens/MisScreen';
 
 /**
  * Routes <Object>
@@ -51,6 +52,13 @@ const Routes = createStackNavigator(
       screen: InventoryScreen,
       navigationOptions: {
         headerTitle: 'Inventory Management',
+        header: props => <GenericHeader {...props} />
+      }
+    },
+    MisScreen: {
+      screen: MisScreen,
+      navigationOptions: {
+        headerTitle: 'MIS Use',
         header: props => <GenericHeader {...props} />
       }
     },
