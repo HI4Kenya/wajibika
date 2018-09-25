@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from 'react-navigation'
 
 import GenericHeader from './widgets/GenericHeader'
-
+import Logscreen from './screens/Logscreen'
 import EuvScreen from './screens/EuvScreen'
 import FacilityScreen from './screens/FacilityScreen'
 import HomeScreen from './screens/HomeScreen'
@@ -20,6 +20,14 @@ import MisScreen from './screens/MisScreen';
  */
 const Routes = createStackNavigator(
   {
+    Logscreen: {
+      screen: Logscreen,
+      navigationOptions: {
+        headerTitle: 'login ',
+        header: props => <GenericHeader {...props} />
+      }
+    },
+
     Home: {
       screen: HomeScreen,
       navigationOptions: {
@@ -78,7 +86,7 @@ const Routes = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Logscreen',
     navigationOptions: {
       headerBackTitleStyle: {
         color: "black"
