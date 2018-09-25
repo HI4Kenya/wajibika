@@ -30,8 +30,8 @@ class FacilityScreen extends Component {
   focusNextField = (id) => {
     this.inputs[id]._root.focus();
   }
-  // you will still need the placeholder for references
-  inputs = {};
+  
+
 
 
   validate(text, type) {

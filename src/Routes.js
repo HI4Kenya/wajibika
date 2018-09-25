@@ -83,11 +83,14 @@ const Routes = createStackNavigator(
       headerBackTitleStyle: {
         color: "black"
       },
+      headerStyle: {
+                
+      },
       headerTitleStyle: {
         fontWeight: "bold",
         color: "black",
       },
-      headerTintColor: "#fff"
+      headerTintColor: "#3f51b5"
     }
   }
 )
