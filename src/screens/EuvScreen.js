@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Accordion, Container, Content, Form, Input, Item, Label  } from 'native-base'
+import { Accordion, Container, Content, Form, Input, Item, Label } from 'native-base';
+import { TextInput } from "react-native"
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Platform } from 'react-native';
 import GenericPicker from '../widgets/GenericPicker'
@@ -7,7 +8,7 @@ import GenericPicker from '../widgets/GenericPicker'
 class EuvForm extends Component {
   constructor(props) {
     super(props)
-    this.focusNextField = this.focusNextField.bind(this);
+
     // to store our input refs
     this.inputs = {};
     this.state = {
@@ -20,11 +21,7 @@ class EuvForm extends Component {
     };
   }
 
-  focusNextField = (id) => {
-    this.inputs[id]._root.focus();
-  }
 
-  
 
   validate(text, type) {
     num = /^[0-9]+$/
@@ -63,30 +60,41 @@ class EuvForm extends Component {
             </Item>
             <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Ordered</Label>
-              <Input onChangeText={(text) => this.validate(text, 'number')}
+              <TextInput
+                ref="order"
+                onChangeText={(text) => this.validate(text, 'number')}
                 keyboardType={'numeric'}
-                ref={input => { this.inputs['1'] = input; }}
-                onSubmitEditing={() => { this.focusNextField('2'); }}
-                blurOnSubmit={false}
+                onSubmitEditing={event => {
+                  this.refs.deliver.focus();
+                }}
                 returnKeyType="next"
+                blurOnSubmit={false}
+                
               />
             </Item>
             <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Delivered</Label>
-              <Input onChangeText={(text) => this.validate(text, 'number')}
+              <TextInput
+                ref="deliver"
+                onChangeText={(text) => this.validate(text, 'number')}
                 keyboardType={'numeric'}
-                ref={input => { this.inputs['2'] = input; }}
-                onSubmitEditing={() => { this.focusNextField('3'); }}
+
+                onSubmitEditing={event => {
+                  this.refs.bin.focus();
+                }}
+                returnKeyType="next" 
                 blurOnSubmit={false}
-                returnKeyType="next" />
+                />
             </Item>
             <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Entered on Bin Card</Label>
-              <Input onChangeText={(text) => this.validate(text, 'number')}
+              <TextInput
+                ref="bin"
+                onChangeText={(text) => this.validate(text, 'number')}
                 keyboardType={'numeric'}
-                ref={input => { this.inputs['3'] = input; }}
-                blurOnSubmit={false}
                 returnKeyType="done"
+                blurOnSubmit={false}
+                
               />
             </Item>
           </Form>
@@ -124,7 +132,7 @@ class EuvScreen extends Component {
             expandedIcon="remove"
             iconStyle={{ color: "green" }}
             expandedIconStyle={{ color: "red" }}
-            dataArray={this.dataArray} 
+            dataArray={this.dataArray}
             expanded={0} renderContent={this._renderContent} />
         </Content>
       </Container>

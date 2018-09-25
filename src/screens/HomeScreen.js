@@ -14,7 +14,7 @@ class HomeScreen extends Component {
       { screen: 'Facility', title: 'Facility Information' },
       { screen: 'HR', title: 'Human Resources' },
       { screen: 'StorageArea', title: 'Storage Area' },
-      { screen: 'MisScreen', title: 'MIS Use' },
+      { screen: 'MisScreen', title: 'MIS - Use' },
       { screen: 'Euv', title: 'EUV' },
       { screen: 'Inventory', title: 'Inventory Management' },
       { screen: 'Resources', title: 'Resources' },

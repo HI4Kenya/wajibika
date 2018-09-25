@@ -66,7 +66,7 @@ const Routes = createStackNavigator(
     MisScreen: {
       screen: MisScreen,
       navigationOptions: {
-        headerTitle: 'MIS Use',
+        headerTitle: 'MIS-Use',
         header: props => <GenericHeader {...props} />
       }
     },
@@ -91,14 +91,12 @@ const Routes = createStackNavigator(
       headerBackTitleStyle: {
         color: "black"
       },
-      headerStyle: {
-                
-      },
+     
       headerTitleStyle: {
         fontWeight: "bold",
         color: "black",
       },
-      headerTintColor: "#3f51b5"
+      headerTintColor: "#fff"
     }
   }
 )
