@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { Platform } from 'react-native';
 import { StyleSheet, View, TextInput, Image } from "react-native";
 import { Button, Text } from 'native-base';
-import HomeScreen from './HomeScreen'
+import HomeScreen from './HomeScreen';
+import SearchScreen from './SearchScreen';
 import { createStackNavigator } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const App = createStackNavigator({
   Home: { screen: HomeScreen },
+  SearchScreen: { screen: SearchScreen }
 });
 
 export default class Logscreen extends Component {
@@ -36,7 +38,7 @@ export default class Logscreen extends Component {
           extraHeight={Platform.select({ android: 200 })}
         >
           <View style={loginStyles.logoContainer} >
-            <Text style={loginStyles.title}>Login </Text>
+            <Text style={loginStyles.title}>Wajibika </Text>
             <Image
               style={loginStyles.logo}
               source={require('../images/logo.jpg')}
@@ -67,7 +69,7 @@ export default class Logscreen extends Component {
               onChangeText={text => this.setState({ passWord: text })}
             />
             <Button rounded style={{ marginTop: 25, marginLeft: 140 }} onPress={() =>
-              navigate('Home')}>
+              navigate('SearchScreen')}>
               <Text>Submit</Text>
             </Button>
           </View>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Accordion, Container, Content, Form, Input, Item, Label } from 'native-base';
-import { TextInput } from "react-native"
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Platform } from 'react-native';
 import GenericPicker from '../widgets/GenericPicker'
@@ -60,7 +59,7 @@ class EuvForm extends Component {
             </Item>
             <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Ordered</Label>
-              <TextInput
+              <Input
                 ref="order"
                 onChangeText={(text) => this.validate(text, 'number')}
                 keyboardType={'numeric'}
@@ -74,7 +73,7 @@ class EuvForm extends Component {
             </Item>
             <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Delivered</Label>
-              <TextInput
+              <Input
                 ref="deliver"
                 onChangeText={(text) => this.validate(text, 'number')}
                 keyboardType={'numeric'}
@@ -88,7 +87,7 @@ class EuvForm extends Component {
             </Item>
             <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Entered on Bin Card</Label>
-              <TextInput
+              <Input
                 ref="bin"
                 onChangeText={(text) => this.validate(text, 'number')}
                 keyboardType={'numeric'}
