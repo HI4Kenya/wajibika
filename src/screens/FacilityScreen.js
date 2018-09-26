@@ -30,8 +30,8 @@ class FacilityScreen extends Component {
   focusNextField = (id) => {
     this.inputs[id]._root.focus();
   }
-  // you will still need the placeholder for references
-  inputs = {};
+  
+
 
 
   validate(text, type) {
@@ -112,23 +112,7 @@ class FacilityScreen extends Component {
           keyboardOpeningTime={0}
           extraHeight={Platform.select({ android: 200 })}
         >
-          <Card>
-            <CardItem header style={{ paddingTop: 50 }}>
-              <Text>Facility Name</Text>
-            </CardItem>
-            <CardItem>
-              <Item stackedLabel style={[!this.state.alphnumValidate ? styles.error : null]}>
-                <Label>Facility Name</Label>
-                <Input placeholder="Enter Facility Name"
-                  onChangeText={(text) => this.validate(text, 'alphnum')}
-                  ref={input => { this.inputs['one'] = input; }}
-                  onSubmitEditing={() => { this.focusNextField('two'); }}
-                  blurOnSubmit={false}
-                  returnKeyType="next" />
-                  
-              </Item>
-            </CardItem>
-          </Card>
+          
           {
             dataArray.map((person, index) => {
               return (

@@ -13,8 +13,9 @@ const GenericHeader = props => {
 const styles = StyleSheet.create({
   header: {
     height: 56,
+    alignItems: 'center', justifyContent: 'center',
     marginTop: Platform.OS == "ios" ? 20 : 0
   }
-})
+});
 
 export default GenericHeader

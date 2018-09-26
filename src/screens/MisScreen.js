@@ -71,7 +71,13 @@ export default class MisScreen extends Component {
     return (
       <Container style={{paddingTop :50}}>
         <Content padder>
-          <Accordion dataArray={this.dataArray} expanded={0} renderContent={this._renderContent}  />
+          <Accordion icon="add"
+            expandedIcon="remove"
+            iconStyle={{ color: "green" }}
+            expandedIconStyle={{ color: "red" }}
+            dataArray={this.dataArray} 
+            expanded={0} 
+            renderContent={this._renderContent}  />
         </Content>
       </Container>
     );

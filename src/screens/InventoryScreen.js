@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import { Accordion, Container, Content, Form, Input, Item, Label } from 'native-base'
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Platform, View } from 'react-native';
 import GenericPicker from '../widgets/GenericPicker'
 
 class InventoryForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+    this.focusNextField = this.focusNextField.bind(this);
+    // to store our input refs
+    this.inputs = {};
     this.state = {
+      number: '',
+      numberValidate: true,
       selected2: undefined,
       picker: {
         options: ['Select Option', 'Yes', 'No'],
-        scores: ['Select Score','3', '0']
+        scores: ['Select Score', '3', '0']
       },
       input: {
         labels: []
@@ -18,49 +24,109 @@ class InventoryForm extends Component {
     };
   }
 
+
+  focusNextField = (id) => {
+    this.inputs[id]._root.focus();
+  }
+
+  validate(text, type) {
+    num = /^[0-9]+$/
+
+    if (type == 'number') {
+      if (num.test(text)) {
+        this.setState({
+          numberValidate: true,
+        })
+      }
+      else {
+        this.setState({
+          numberValidate: false,
+        })
+      }
+    }
+  }
+
   render() {
     return (
       <Container>
-        <Form>
-          <Item stackedLabel style={{paddingTop: 15}}>
-            <Label>Is the Stock Card Available?</Label>
-            <GenericPicker options={this.state.picker.options} />
-          </Item>       
-          
-          <Item floatingLabel style={{paddingTop: 15}}>
-            <Label>Stock counts recorded in the 3-month period</Label>
-            <Input />
-          </Item>
+        <KeyboardAwareScrollView
+          enableOnAndroid
+          enableAutomaticScroll
+          keyboardOpeningTime={0}
+          extraHeight={Platform.select({ android: 200 })}
+        >
+          <Form>
+            <Item stackedLabel style={{ paddingTop: 15 }}>
+              <Label>Is the Stock Card Available?</Label>
+              <GenericPicker options={this.state.picker.options} />
+            </Item>
 
-          <Item floatingLabel style={{paddingTop: 15}}>
-            <Label>days o/s in 3-month period</Label>
-            <Input />
-          </Item>
+            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>Stock counts recorded in the 3-month period</Label>
+              <Input
+                keyboardType={'numeric'}
+                onChangeText={(text) => this.validate(text, 'number')}
+                ref={input => { this.inputs['one'] = input; }}
+                onSubmitEditing={() => { this.focusNextField('two'); }}
+                blurOnSubmit={false}
+                returnKeyType="next" />
+            </Item>
 
-          <Item floatingLabel style={{paddingTop: 15}}>
-            <Label>Stock Card Balance</Label>
-            <Input />
-          </Item>
+            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>Days o/s in 3-month period</Label>
+              <Input
+                onChangeText={(text) => this.validate(text, 'number')}
+                keyboardType={'numeric'}
+                ref={input => { this.inputs['two'] = input; }}
+                onSubmitEditing={() => { this.focusNextField('three'); }}
+                blurOnSubmit={false}
+                returnKeyType="next" />
+            </Item>
 
-          <Item floatingLabel style={{paddingTop: 15}}>
-            <Label>AMC (calculate from stock card issues)</Label>
-            <Input />
-          </Item>
-          
-          <Item stackedLabel style={{paddingTop: 15}}>
-            <Label>Any expired stock in the facility? (Yes/ No) Expired in the last 3 months.</Label>
-            <GenericPicker options={this.state.picker.options} />
-          </Item>
+            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>Stock Card Balance</Label>
+              <Input
+                onChangeText={(text) => this.validate(text, 'number')}
+                keyboardType={'numeric'}
+                ref={input => { this.inputs['three'] = input; }}
+                onSubmitEditing={() => { this.focusNextField('four'); }}
+                blurOnSubmit={false}
+                returnKeyType="next" />
+            </Item>
 
-          <Item floatingLabel style={{paddingTop: 15}}>
-            <Label>Actual physical stock</Label>
-            <Input />
-          </Item>
-          <Item floatingLabel style={{paddingTop: 15}}>
-            <Label>Current MO</Label>
-            <Input />
-          </Item>
-        </Form>
+            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>AMC (calculate from stock card issues)</Label>
+              <Input
+                onChangeText={(text) => this.validate(text, 'number')}
+                keyboardType={'numeric'}
+                ref={input => { this.inputs['four'] = input; }}
+                onSubmitEditing={() => { this.focusNextField('five'); }}
+                blurOnSubmit={false}
+                returnKeyType="next" />
+            </Item>
+
+            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>Actual physical stock</Label>
+              <Input
+                onChangeText={(text) => this.validate(text, 'number')}
+                keyboardType={'numeric'}
+                ref={input => { this.inputs['five'] = input; }}
+                blurOnSubmit={false}
+                returnKeyType="done" />
+            </Item>
+
+            <Item stackedLabel style={{ paddingTop: 15 }}>
+              <Label>Any expired stock in the facility? (Yes/ No) Expired in the last 3 months.</Label>
+              <GenericPicker options={this.state.picker.options} />
+            </Item>
+
+
+            <Item floatingLabel style={{ paddingTop: 15 }}>
+              <Label>Current MO</Label>
+              <Input />
+            </Item>
+          </Form>
+        </KeyboardAwareScrollView>
       </Container>
     );
   }
@@ -87,8 +153,8 @@ export default class InventoryScreen extends Component {
     { title: "16.Tetanus toxoid vaccine " },
     { title: "17.Measles Vaccine;" }
   ]
-  
-  _renderContent () {
+
+  _renderContent() {
     return (
       <InventoryForm />
     );
@@ -96,11 +162,24 @@ export default class InventoryScreen extends Component {
 
   render() {
     return (
-      <Container style={{paddingTop :50}}>
+      <Container style={{ paddingTop: 50 }}>
         <Content padder>
-          <Accordion dataArray={this.dataArray} expanded={0} renderContent={this._renderContent}  />
+          <Accordion icon="add"
+            expandedIcon="remove"
+            iconStyle={{ color: "green" }}
+            expandedIconStyle={{ color: "red" }}
+            dataArray={this.dataArray} 
+            expanded={0} 
+            renderContent={this._renderContent} />
         </Content>
       </Container>
     );
   }
 }
+
+var styles = ({
+  error: {
+    borderWidth: 6,
+    borderColor: 'red',
+  },
+});

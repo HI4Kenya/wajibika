@@ -21,6 +21,7 @@
   "dependencies": {
     "@expo/ex-navigation": "^4.2.0",
     "@expo/vector-icons": "^6.3.1",
+    "d2": "^31.0.1",
     "expo": "^27.0.1",
     "native-base": "^2.8.0",
     "react": "16.3.1",
