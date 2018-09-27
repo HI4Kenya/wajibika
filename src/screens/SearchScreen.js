@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { Container, Content, InputGroup, Text, Button, Input, Icon } from "native-base";
 import { Platform } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import HomeScreen from './HomeScreen';
-import { createStackNavigator } from 'react-navigation';
+// import HomeScreen from './HomeScreen';
+// import { createStackNavigator } from 'react-navigation';
 
-const App = createStackNavigator({
-  Home: { screen: HomeScreen }
-
-});
+// const App = createStackNavigator({
+//   Home: { screen: HomeScreen }
+// });
 
 export default class SearchScreen extends Component {
 

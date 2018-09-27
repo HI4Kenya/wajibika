@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import {
-  StackNavigator,
-} from 'react-navigation';
 import { Root } from "native-base";
 import { Font, AppLoading } from "expo";
 // import { Provider } from 'react-redux';
+
+/**
+ * Routes tag
+ * 
+ * Defines all screens in the main 'Stack'
+ */
 import Routes from './src/Routes';
-import Logscreen from './src/screens/Logscreen'
 
 export default class App extends Component {
   constructor(props) {
@@ -36,10 +38,5 @@ export default class App extends Component {
         <Routes />
       </Root>
     );
-    /**
-     * Routes tag
-     * 
-     * Defines all screens in the main 'Stack'
-     */
   }
 }

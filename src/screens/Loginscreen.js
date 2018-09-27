@@ -1,33 +1,33 @@
-import React, { Component } from "react";
+import { request } from 'http'
+
+import React, { Component } from 'react';
 import { Platform } from 'react-native';
-import { StyleSheet, View, TextInput, Image } from "react-native";
+import { StyleSheet, View, TextInput, Image } from 'react-native';
 import { Button, Text } from 'native-base';
-import HomeScreen from './HomeScreen';
-import SearchScreen from './SearchScreen';
-import { createStackNavigator } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-const App = createStackNavigator({
-  Home: { screen: HomeScreen },
-  SearchScreen: { screen: SearchScreen }
-});
-
-export default class Logscreen extends Component {
+export default class Loginscreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      emailAddress: "",
-      passWord: ""
+      email: '',
+      password: ''
     };
   }
 
-  onPressSubmitButton() {
-    // this.onFetchLoginRecords();
+  onPressLoginButton() {
+    const { navigate } = this.props.navigation
+
+    console.log(this.state.email + this.state.password)
+
+    
+
+    navigate('SearchScreen')
   }
 
   render() {
-    const { navigate } = this.props.navigation
 
     return (
       <View style={loginStyles.container}>
@@ -57,7 +57,7 @@ export default class Logscreen extends Component {
               onSubmitEditing={event => {
                 this.refs.txtPassword.focus();
               }}
-              onChangeText={text => this.setState({ emailAddress: text })}
+              onChangeText={email => this.setState({ email })}
             />
             <TextInput
               ref="txtPassword"
@@ -66,11 +66,10 @@ export default class Logscreen extends Component {
               placeholderTextColor = '#5C6D70'
               returnKeyType="done"
               secureTextEntry={true}
-              onChangeText={text => this.setState({ passWord: text })}
+              onChangeText={password => this.setState({ password })}
             />
-            <Button rounded style={{ marginTop: 25, marginLeft: 140 }} onPress={() =>
-              navigate('SearchScreen')}>
-              <Text>Submit</Text>
+            <Button rounded style={{ marginTop: 25, marginLeft: 140 }} onPress={() => this.onPressLoginButton()}>
+              <Text>Login</Text>
             </Button>
           </View>
 
