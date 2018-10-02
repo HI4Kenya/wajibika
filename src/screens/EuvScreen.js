@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Accordion, Container, Content, Form, Input, Item, Label } from 'native-base';
+import { Accordion, Container, Content, Form, Item, Label } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Platform } from 'react-native';
+import { Platform, TextInput } from 'react-native';
 import GenericPicker from '../widgets/GenericPicker'
 
 class EuvForm extends Component {
@@ -53,47 +53,46 @@ class EuvForm extends Component {
               <Label>Items Received?</Label>
               <GenericPicker options={this.state.picker.options} />
             </Item>
-            <Item stackedLabel last>
+            <Item stackedLabel>
               <Label>Delivery Note Available?</Label>
               <GenericPicker options={this.state.picker.options} />
             </Item>
-            <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Ordered</Label>
-              <Input
-                ref="order"
-                onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
+              <TextInput
+                ref="uno"
+                keyboardType="numeric"
                 onSubmitEditing={event => {
-                  this.refs.deliver.focus();
+                  this.refs.dos.focus();
                 }}
+                onChangeText={(text) => this.validate(text, 'number')}
                 returnKeyType="next"
                 blurOnSubmit={false}
-                
+              />
+
+
+            </Item>
+            <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>Quantity Delivered</Label>
+              <TextInput
+                ref="dos"
+                keyboardType="numeric"
+                onSubmitEditing={event => {
+                  this.refs.tres.focus();
+                }}
+                onChangeText={(text) => this.validate(text, 'number')}
+                blurOnSubmit={false}
+                returnKeyType="next"
               />
             </Item>
-            <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
-              <Label>Quantity Delivered</Label>
-              <Input
-                ref="deliver"
-                onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-
-                onSubmitEditing={event => {
-                  this.refs.bin.focus();
-                }}
-                returnKeyType="next" 
-                blurOnSubmit={false}
-                />
-            </Item>
-            <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Entered on Bin Card</Label>
-              <Input
-                ref="bin"
+              <TextInput
+                ref="tres"
+                keyboardType="numeric"
                 onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-                returnKeyType="done"
                 blurOnSubmit={false}
-                
+                returnKeyType="done"
               />
             </Item>
           </Form>
