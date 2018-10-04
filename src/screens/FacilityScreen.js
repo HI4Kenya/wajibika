@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { Card, CardItem, Container, Content, Input, Item, Label, Text } from 'native-base';
-import { Platform, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Card, CardItem, Container, Input, Item, Label, Text } from 'native-base'
+import { Platform } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-import { validate } from 'jsonschema';
-
+import { validate } from 'jsonschema'
 
 class FacilityScreen extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.focusNextField = this.focusNextField.bind(this);
+    this.focusNextField = this.focusNextField.bind(this)
     // to store our input refs
-    this.inputs = {};
+    this.inputs = {}
 
     this.state = {
       name: '',
@@ -116,7 +115,7 @@ class FacilityScreen extends Component {
           {
             dataArray.map((person, index) => {
               return (
-                <Card>
+                <Card key={index}>
                   <CardItem header>
                     <Text>{person}</Text>
                   </CardItem>
@@ -124,11 +123,11 @@ class FacilityScreen extends Component {
                     <Item stackedLabel style={[!this.state.nameValidate ? styles.error : null]}>
                       <Label>Name</Label>
                       <Input onChangeText={(text) => this.validate(text, 'name')}
-                        placeholder="Enter Facility in-Charge"
+                        placeholder='Enter Facility in-Charge'
                         blurOnSubmit={false}
-                        onSubmitEditing={() => { this.focusNextField('three'); }}
-                        ref={input => { this.inputs['two'] = input; }}
-                        returnKeyType="next" />
+                        onSubmitEditing={() => { this.focusNextField('three') }}
+                        ref={input => { this.inputs['two'] = input }}
+                        returnKeyType='next' />
                     </Item>
                   </CardItem>
                   <CardItem>
@@ -136,28 +135,28 @@ class FacilityScreen extends Component {
                       <Label>Email Address</Label>
                       <Input onChangeText={(text) => this.validate(text, 'email')}
                         keyboardType={'email-address'}
-                        placeholder="Enter Email Address"
+                        placeholder='Enter Email Address'
                         blurOnSubmit={false}
                         onSubmitEditing={() => {
-                          this.focusNextField('four');
+                          this.focusNextField('four')
                         }}
                         
                         ref={input => {
-                          this.inputs['three'] = input;
+                          this.inputs['three'] = input
                         }}
-                        returnKeyType="next" />
+                        returnKeyType='next' />
                     </Item>
                   </CardItem>
                   <CardItem>
                     <Item stackedLabel style={[!this.state.phonenumberValidate ? styles.error : null]}>
                       <Label>Phone Number</Label>
                       <Input keyboardType={'numeric'} onChangeText={(text) => this.validate(text, 'phonenumber')} 
-                        placeholder="Enter Phone Number"
+                        placeholder='Enter Phone Number'
                         blurOnSubmit={ true }
-                        returnKeyType={ "done" }
+                        returnKeyType={ 'done' }
                         style={styles.textInput}
                         ref={ input => {
-                          this.inputs['four'] = input;
+                          this.inputs['four'] = input
                         }} />
 
                     </Item>
@@ -180,7 +179,7 @@ var styles = ({
     borderWidth: 6,
     borderColor: 'red',
   },
-});
+})
 
 export default FacilityScreen
 

@@ -97,14 +97,14 @@ const Routes = createStackNavigator(
     initialRouteName: 'Loginscreen',
     navigationOptions: {
       headerBackTitleStyle: {
-        color: "black"
+        color: 'black'
       },
 
       headerTitleStyle: {
-        fontWeight: "bold",
-        color: "black",
+        fontWeight: 'bold',
+        color: 'black',
       },
-      headerTintColor: "#fff"
+      headerTintColor: '#fff'
     }
   }
 )
