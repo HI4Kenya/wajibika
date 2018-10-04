@@ -142,11 +142,7 @@ class FacilityScreen extends Component {
                       <Input keyboardType={'numeric'}
                         onChangeText={(text) => this.validate(text, 'phonenumber')}
                         blurOnSubmit={true}
-<<<<<<< HEAD
-                        returnKeyType='done'
-=======
                         returnKeyType={'done'}
->>>>>>> dev-merge
                         style={styles.textInput}
                          />
 
