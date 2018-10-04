@@ -1,25 +1,23 @@
-import React, { Component } from "react";
-import { Container, Content, InputGroup, Text, Button, Input, Icon, DatePicker } from "native-base";
-import { Platform } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-// import HomeScreen from './HomeScreen';
-// import { createStackNavigator } from 'react-navigation';
+import React, { Component } from 'react'
+import { Container, Content, InputGroup, Text, Button, Input, Icon, DatePicker } from 'native-base'
+import { Platform } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import HomeScreen from './HomeScreen'
+// import { createStackNavigator } from 'react-navigation'
 
 // const App = createStackNavigator({
 //   Home: { screen: HomeScreen }
-// });
+// })
 
 export default class SearchScreen extends Component {
   constructor(props) {
-    super(props);
-    this.state = { chosenDate: new Date() };
-    this.setDate = this.setDate.bind(this);
+    super(props)
+    this.state = { chosenDate: new Date() }
+    this.setDate = this.setDate.bind(this)
   }
   setDate(newDate) {
-    this.setState({ chosenDate: newDate });
+    this.setState({ chosenDate: newDate })
   }
-
-
 
   render() {
     const { navigate } = this.props.navigation
@@ -48,14 +46,14 @@ export default class SearchScreen extends Component {
               defaultDate={new Date(2018, 4, 4)}
               minimumDate={new Date(2018, 1, 1)}
               maximumDate={new Date(2018, 12, 31)}
-              locale={"en"}
+              locale={'en'}
               timeZoneOffsetInMinutes={undefined}
               modalTransparent={false}
-              animationType={"fade"}
-              androidMode={"default"}
-              placeHolderText="Select date"
-              textStyle={{ color: "#5C6D70" }}
-              placeHolderTextStyle={{ color: "#5C6D70" }}
+              animationType={'fade'}
+              androidMode={'default'}
+              placeHolderText='Select date'
+              textStyle={{ color: '#5C6D70' }}
+              placeHolderTextStyle={{ color: '#5C6D70' }}
               onDateChange={this.setDate}
             />
 
@@ -67,6 +65,6 @@ export default class SearchScreen extends Component {
           </Content>
         </KeyboardAwareScrollView>
       </Container>
-    );
+    )
   }
 }
