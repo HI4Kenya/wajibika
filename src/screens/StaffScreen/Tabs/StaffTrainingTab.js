@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import { Form, Container, Content, Card, CardItem, Text, Body, Item, Label, Input } from "native-base";
-import { TextInput } from 'react-native';
-import { Platform } from 'react-native';
+import { Form, Container, Content, Card, CardItem, Text, Body, Item, Label } from "native-base";
+import { TextInput, Platform  } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class StaffNumberTab extends Component {
   constructor(props) {
     super(props)
-    this.focusNextField = this.focusNextField.bind(this);
+  
     // to store our input refs
     this.inputs = {};
     this.state = {
@@ -15,10 +14,6 @@ export default class StaffNumberTab extends Component {
       numberValidate: true,
       total: 0
     }
-  }
-
-  focusNextField = (id) => {
-    this.inputs[id]._root.focus();
   }
 
   validate(text, type) {
@@ -65,7 +60,7 @@ export default class StaffNumberTab extends Component {
                   this.refs.dos.focus();
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-              
+                blurOnSubmit={false}
                 returnKeyType="next"
               />
             </Item>
@@ -78,7 +73,7 @@ export default class StaffNumberTab extends Component {
                   this.refs.tres.focus();
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-          
+                blurOnSubmit={false}
                 returnKeyType="next"
               />
             </Item>
@@ -91,7 +86,7 @@ export default class StaffNumberTab extends Component {
                   this.refs.quatro.focus();
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-            
+                blurOnSubmit={false}
                 returnKeyType="next"
               />
             </Item>
@@ -104,7 +99,7 @@ export default class StaffNumberTab extends Component {
                   this.refs.cinq.focus();
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-            
+                blurOnSubmit={false}
                 returnKeyType="next"
               />
             </Item>
@@ -117,7 +112,7 @@ export default class StaffNumberTab extends Component {
                   this.refs.six.focus();
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-               
+                blurOnSubmit={false}
                 returnKeyType="next" />
             </Item>
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>

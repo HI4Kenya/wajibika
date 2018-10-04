@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Accordion, Container, Content, Form, Input, Item, Label } from 'native-base'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Platform, View } from 'react-native';
+import { Platform, TextInput } from 'react-native';
 import GenericPicker from '../widgets/GenericPicker'
 
 class InventoryForm extends Component {
@@ -61,58 +61,71 @@ class InventoryForm extends Component {
               <GenericPicker options={this.state.picker.options} />
             </Item>
 
-            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Stock counts recorded in the 3-month period</Label>
-              <Input
-                keyboardType={'numeric'}
+              <TextInput
+                ref="uno"
+                keyboardType="numeric"
+                onSubmitEditing={event => {
+                  this.refs.dos.focus();
+                }}
                 onChangeText={(text) => this.validate(text, 'number')}
-                ref={input => { this.inputs['one'] = input; }}
-                onSubmitEditing={() => { this.focusNextField('two'); }}
                 blurOnSubmit={false}
-                returnKeyType="next" />
+                returnKeyType="next"
+              />
             </Item>
 
-            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Days o/s in 3-month period</Label>
-              <Input
+              <TextInput
+                ref="dos"
+                keyboardType="numeric"
+                onSubmitEditing={event => {
+                  this.refs.tres.focus();
+                }}
                 onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-                ref={input => { this.inputs['two'] = input; }}
-                onSubmitEditing={() => { this.focusNextField('three'); }}
                 blurOnSubmit={false}
-                returnKeyType="next" />
+                returnKeyType="next"
+              />
             </Item>
 
-            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Stock Card Balance</Label>
-              <Input
+              <TextInput
+                ref="tres"
+                keyboardType="numeric"
+                onSubmitEditing={event => {
+                  this.refs.quatro.focus();
+                }}
                 onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-                ref={input => { this.inputs['three'] = input; }}
-                onSubmitEditing={() => { this.focusNextField('four'); }}
                 blurOnSubmit={false}
-                returnKeyType="next" />
+                returnKeyType="next"
+              />
             </Item>
 
-            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>AMC (calculate from stock card issues)</Label>
-              <Input
+              <TextInput
+                ref="quatro"
+                keyboardType="numeric"
+                onSubmitEditing={event => {
+                  this.refs.cinq.focus();
+                }}
                 onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-                ref={input => { this.inputs['four'] = input; }}
-                onSubmitEditing={() => { this.focusNextField('five'); }}
                 blurOnSubmit={false}
-                returnKeyType="next" />
+                returnKeyType="next"
+              />
             </Item>
 
-            <Item floatingLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={{ paddingTop: 15 }} style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Actual physical stock</Label>
-              <Input
+              <TextInput
+                ref="cinq"
+                keyboardType="numeric"
                 onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-                ref={input => { this.inputs['five'] = input; }}
                 blurOnSubmit={false}
-                returnKeyType="done" />
+                returnKeyType="done"
+              />
             </Item>
 
             <Item stackedLabel style={{ paddingTop: 15 }}>
@@ -168,8 +181,8 @@ export default class InventoryScreen extends Component {
             expandedIcon="remove"
             iconStyle={{ color: "green" }}
             expandedIconStyle={{ color: "red" }}
-            dataArray={this.dataArray} 
-            expanded={0} 
+            dataArray={this.dataArray}
+            expanded={0}
             renderContent={this._renderContent} />
         </Content>
       </Container>
