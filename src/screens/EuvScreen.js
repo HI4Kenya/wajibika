@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Accordion, Container, Content, Form, Input, Item, Label } from 'native-base';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Platform } from 'react-native';
+import { Accordion, Container, Content, Form, Item, Label } from 'native-base'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Platform, TextInput } from 'react-native'
 import GenericPicker from '../widgets/GenericPicker'
 
 class EuvForm extends Component {
@@ -9,7 +9,7 @@ class EuvForm extends Component {
     super(props)
 
     // to store our input refs
-    this.inputs = {};
+    this.inputs = {}
     this.state = {
       number: '',
       numberValidate: true,
@@ -17,10 +17,8 @@ class EuvForm extends Component {
       picker: {
         options: ['Select Option', 'Yes', 'No']
       }
-    };
+    }
   }
-
-
 
   validate(text, type) {
     num = /^[0-9]+$/
@@ -53,53 +51,52 @@ class EuvForm extends Component {
               <Label>Items Received?</Label>
               <GenericPicker options={this.state.picker.options} />
             </Item>
-            <Item stackedLabel last>
+            <Item stackedLabel>
               <Label>Delivery Note Available?</Label>
               <GenericPicker options={this.state.picker.options} />
             </Item>
-            <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Ordered</Label>
-              <Input
-                ref="order"
-                onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
+              <TextInput
+                ref='uno'
+                keyboardType='numeric'
                 onSubmitEditing={event => {
-                  this.refs.deliver.focus();
+                  this.refs.dos.focus()
                 }}
-                returnKeyType="next"
+                onChangeText={(text) => this.validate(text, 'number')}
+                returnKeyType='next'
                 blurOnSubmit={false}
-                
+              />
+
+
+            </Item>
+            <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
+              <Label>Quantity Delivered</Label>
+              <TextInput
+                ref='dos'
+                keyboardType='numeric'
+                onSubmitEditing={event => {
+                  this.refs.tres.focus()
+                }}
+                onChangeText={(text) => this.validate(text, 'number')}
+                blurOnSubmit={false}
+                returnKeyType='next'
               />
             </Item>
-            <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
-              <Label>Quantity Delivered</Label>
-              <Input
-                ref="deliver"
-                onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-
-                onSubmitEditing={event => {
-                  this.refs.bin.focus();
-                }}
-                returnKeyType="next" 
-                blurOnSubmit={false}
-                />
-            </Item>
-            <Item floatingLabel style={[!this.state.numberValidate ? styles.error : null]}>
+            <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Quantity Entered on Bin Card</Label>
-              <Input
-                ref="bin"
+              <TextInput
+                ref='tres'
+                keyboardType='numeric'
                 onChangeText={(text) => this.validate(text, 'number')}
-                keyboardType={'numeric'}
-                returnKeyType="done"
                 blurOnSubmit={false}
-                
+                returnKeyType='done'
               />
             </Item>
           </Form>
         </KeyboardAwareScrollView>
       </Container>
-    );
+    )
   }
 }
 
@@ -113,7 +110,7 @@ class EuvScreen extends Component {
     { title: 'AL 24' },
     { title: 'DMPA' },
     { title: 'ORS/Zn Co pack' }
-  ];
+  ]
 
   _renderContent() {
     return (
@@ -127,10 +124,10 @@ class EuvScreen extends Component {
     return (
       <Container style={{ paddingBottom: 0 }}>
         <Content padder>
-          <Accordion icon="add"
-            expandedIcon="remove"
-            iconStyle={{ color: "green" }}
-            expandedIconStyle={{ color: "red" }}
+          <Accordion icon='add'
+            expandedIcon='remove'
+            iconStyle={{ color: 'green' }}
+            expandedIconStyle={{ color: 'red' }}
             dataArray={this.dataArray}
             expanded={0} renderContent={this._renderContent} />
         </Content>
@@ -144,6 +141,6 @@ var styles = ({
     borderWidth: 6,
     borderColor: 'red',
   },
-});
+})
 
 export default EuvScreen

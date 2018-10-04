@@ -1,24 +1,19 @@
-import React, { Component } from "react";
-import { Form, Container, Content, Card, CardItem, Text, Body, Item, Label, Input } from "native-base";
-import { TextInput } from 'react-native';
-import { Platform } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import React, { Component } from 'react'
+import { Form, Container, Content, Card, CardItem, Text, Body, Item, Label } from 'native-base'
+import { TextInput, Platform  } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default class StaffNumberTab extends Component {
   constructor(props) {
     super(props)
-    this.focusNextField = this.focusNextField.bind(this);
+  
     // to store our input refs
-    this.inputs = {};
+    this.inputs = {}
     this.state = {
       number: '',
       numberValidate: true,
       total: 0
     }
-  }
-
-  focusNextField = (id) => {
-    this.inputs[id]._root.focus();
   }
 
   validate(text, type) {
@@ -59,74 +54,74 @@ export default class StaffNumberTab extends Component {
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Pharmacists</Label>
               <TextInput
-                ref="uno"
-                keyboardType="numeric"
+                ref='uno'
+                keyboardType='numeric'
                 onSubmitEditing={event => {
-                  this.refs.dos.focus();
+                  this.refs.dos.focus()
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-              
-                returnKeyType="next"
+                blurOnSubmit={false}
+                returnKeyType='next'
               />
             </Item>
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Pharmaceutical Technologists</Label>
               <TextInput
-                ref="dos"
-                keyboardType="numeric"
+                ref='dos'
+                keyboardType='numeric'
                 onSubmitEditing={event => {
-                  this.refs.tres.focus();
+                  this.refs.tres.focus()
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-          
-                returnKeyType="next"
+                blurOnSubmit={false}
+                returnKeyType='next'
               />
             </Item>
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Commodity Nurse</Label>
               <TextInput
-                ref="tres"
-                keyboardType="numeric"
+                ref='tres'
+                keyboardType='numeric'
                 onSubmitEditing={event => {
-                  this.refs.quatro.focus();
+                  this.refs.quatro.focus()
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-            
-                returnKeyType="next"
+                blurOnSubmit={false}
+                returnKeyType='next'
               />
             </Item>
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Lab technologists</Label>
               <TextInput
-                ref="quatro"
-                keyboardType="numeric"
+                ref='quatro'
+                keyboardType='numeric'
                 onSubmitEditing={event => {
-                  this.refs.cinq.focus();
+                  this.refs.cinq.focus()
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-            
-                returnKeyType="next"
+                blurOnSubmit={false}
+                returnKeyType='next'
               />
             </Item>
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Lab technicians</Label>
               <TextInput
-                ref="cinq"
-                keyboardType="numeric"
+                ref='cinq'
+                keyboardType='numeric'
                 onSubmitEditing={event => {
-                  this.refs.six.focus();
+                  this.refs.six.focus()
                 }}
                 onChangeText={(text) => this.validate(text, 'number')}
-               
-                returnKeyType="next" />
+                blurOnSubmit={false}
+                returnKeyType='next' />
             </Item>
             <Item stackedLabel style={[!this.state.numberValidate ? styles.error : null]}>
               <Label>Nutrition Officer</Label>
               <TextInput
-                ref="six"
-                keyboardType="numeric"
+                ref='six'
+                keyboardType='numeric'
                 onChangeText={(text) => this.validate(text, 'number')}
-                returnKeyType="done" />
+                returnKeyType='done' />
             </Item>
 
             <Text>Total: {this.state.total}</Text>
@@ -135,7 +130,7 @@ export default class StaffNumberTab extends Component {
         </Content>
         </KeyboardAwareScrollView>
       </Container>
-    );
+    )
   }
 }
 
@@ -144,4 +139,4 @@ var styles = ({
     borderWidth: 6,
     borderColor: 'red',
   },
-});
+})

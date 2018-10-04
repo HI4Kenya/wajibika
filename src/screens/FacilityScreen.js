@@ -29,7 +29,7 @@ class FacilityScreen extends Component {
   focusNextField = (id) => {
     this.inputs[id]._root.focus();
   }
-  
+
 
 
 
@@ -111,7 +111,7 @@ class FacilityScreen extends Component {
           keyboardOpeningTime={0}
           extraHeight={Platform.select({ android: 200 })}
         >
-          
+
           {
             dataArray.map((person, index) => {
               return (
@@ -123,11 +123,8 @@ class FacilityScreen extends Component {
                     <Item stackedLabel style={[!this.state.nameValidate ? styles.error : null]}>
                       <Label>Name</Label>
                       <Input onChangeText={(text) => this.validate(text, 'name')}
-                        placeholder='Enter Facility in-Charge'
                         blurOnSubmit={false}
-                        onSubmitEditing={() => { this.focusNextField('three') }}
-                        ref={input => { this.inputs['two'] = input }}
-                        returnKeyType='next' />
+                        returnKeyType='done' />
                     </Item>
                   </CardItem>
                   <CardItem>
@@ -135,29 +132,19 @@ class FacilityScreen extends Component {
                       <Label>Email Address</Label>
                       <Input onChangeText={(text) => this.validate(text, 'email')}
                         keyboardType={'email-address'}
-                        placeholder='Enter Email Address'
                         blurOnSubmit={false}
-                        onSubmitEditing={() => {
-                          this.focusNextField('four')
-                        }}
-                        
-                        ref={input => {
-                          this.inputs['three'] = input
-                        }}
-                        returnKeyType='next' />
+                        returnKeyType='done' />
                     </Item>
                   </CardItem>
                   <CardItem>
                     <Item stackedLabel style={[!this.state.phonenumberValidate ? styles.error : null]}>
                       <Label>Phone Number</Label>
-                      <Input keyboardType={'numeric'} onChangeText={(text) => this.validate(text, 'phonenumber')} 
-                        placeholder='Enter Phone Number'
-                        blurOnSubmit={ true }
-                        returnKeyType={ 'done' }
+                      <Input keyboardType={'numeric'}
+                        onChangeText={(text) => this.validate(text, 'phonenumber')}
+                        blurOnSubmit={true}
+                        returnKeyType={'done'}
                         style={styles.textInput}
-                        ref={ input => {
-                          this.inputs['four'] = input
-                        }} />
+                         />
 
                     </Item>
                   </CardItem>
