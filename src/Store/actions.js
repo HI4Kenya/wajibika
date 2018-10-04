@@ -1,0 +1,1 @@
+export const setCredentials = payload => ({ type: 'SET_CREDENTIALS', payload: payload.user })

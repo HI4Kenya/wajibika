@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from 'react-navigation'
 
 import GenericHeader from './widgets/GenericHeader'
-import Loginscreen from './screens/Loginscreen'
+import LoginScreen from './screens/LoginScreen'
 import SearchScreen from './screens/SearchScreen'
 import EuvScreen from './screens/EuvScreen'
 import FacilityScreen from './screens/FacilityScreen'
@@ -21,10 +21,10 @@ import MisScreen from './screens/MisScreen';
  */
 const Routes = createStackNavigator(
   {
-    Loginscreen: {
-      screen: Loginscreen,
+    LoginScreen: {
+      screen: LoginScreen,
       navigationOptions: {
-        headerTitle: 'login ',
+        headerTitle: 'Login ',
         header: props => <GenericHeader {...props} />
       }
     },
@@ -94,7 +94,7 @@ const Routes = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Loginscreen',
+    initialRouteName: 'LoginScreen',
     navigationOptions: {
       headerBackTitleStyle: {
         color: 'black'

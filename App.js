@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
  * Defines all screens in the main 'Stack'
  */
 import Routes from './src/Routes'
-import Store from './src/Store'
+import store from './src/Store'
 
 export default class App extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class App extends Component {
     }
     return (
       <Root>
-        <Provider store={Store}>
+        <Provider store={store}>
           <Routes />
         </Provider>
       </Root>

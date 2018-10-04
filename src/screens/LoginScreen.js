@@ -1,30 +1,40 @@
-import { request } from 'http'
+import React, { Component } from 'react'
+import { Platform } from 'react-native'
+import { StyleSheet, View, TextInput, Image } from 'react-native'
+import { Button, Text } from 'native-base'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-import React, { Component } from 'react';
-import { Platform } from 'react-native';
-import { StyleSheet, View, TextInput, Image } from 'react-native';
-import { Button, Text } from 'native-base';
-// import { createStackNavigator } from 'react-navigation';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { options } from '../Api'
 
-export default class Loginscreen extends Component {
+export default class LoginScreen extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       email: '',
-      password: ''
-    };
+      password: '',
+      serverUrl: ''
+    }
   }
 
   onPressLoginButton() {
     const { navigate } = this.props.navigation
 
+    // if (this.state.email != '' && this.state.password != '' && this.state.serverUrl != '') {
+    //   options.hostname=this.state.serverUrl
+    //   options.port = 80
+    // }
+
     console.log(this.state.email + this.state.password)
 
-    
-
-    navigate('SearchScreen')
+    // return fetch (options.hostname, options)
+    //   .then(response => response.json())
+    //   .then(json => {
+    //     console.log(json)
+    //   })
+    //   .catch(error => {
+    //     console.error(error)
+    //   })
   }
 
   render() {
@@ -47,24 +57,37 @@ export default class Loginscreen extends Component {
           </View>
 
           <View>
-            <TextInput
-              ref="txtEmail"
+          <TextInput
+              ref='txtServeUrl'
               style={loginStyles.textInput}
-              placeholder="Email Address"
+              placeholder='Server URL'
               placeholderTextColor = '#5C6D70'
-              keyboardType="email-address"
-              returnKeyType="next"
+              keyboardType='default'
+              returnKeyType='next'
               onSubmitEditing={event => {
-                this.refs.txtPassword.focus();
+                this.refs.txtServerUrl.focus()
+              }}
+              onChangeText={url => this.setState({ serverUrl: url })}
+            />
+
+            <TextInput
+              ref='txtEmail'
+              style={loginStyles.textInput}
+              placeholder='Email Address'
+              placeholderTextColor = '#5C6D70'
+              keyboardType='email-address'
+              returnKeyType='next'
+              onSubmitEditing={event => {
+                this.refs.txtPassword.focus()
               }}
               onChangeText={email => this.setState({ email })}
             />
             <TextInput
-              ref="txtPassword"
+              ref='txtPassword'
               style={loginStyles.textInput}
-              placeholder="Password"
+              placeholder='Password'
               placeholderTextColor = '#5C6D70'
-              returnKeyType="done"
+              returnKeyType='done'
               secureTextEntry={true}
               onChangeText={password => this.setState({ password })}
             />
@@ -75,24 +98,26 @@ export default class Loginscreen extends Component {
 
         </KeyboardAwareScrollView>
       </View>
-    );
+    )
   }
 }
 
 const loginStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff',
+    marginRight: 10,
+    marginLeft: 10
   },
   textArea: {
     padding: 60,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
   },
   textInput: {
     height: 40,
-    textAlign: "center",
+    textAlign: 'left',
     marginTop: 30
   },
   logoContainer: {
@@ -112,6 +137,6 @@ const loginStyles = StyleSheet.create({
     textAlign: 'center',
     opacity: 0.7,
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: 'bold'
   }
-});
+})
