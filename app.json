@@ -1,6 +1,15 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "name": "Wajibika",
+    "icon": "./src/images/icon-96.png",
+    "version": "0.0.1",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.monsho.wajibika"
+    },
+    "android": {
+      "package": "com.monsho.wajibika"
+    }
   },
   "androidStatusBar": {
     "backgroundColor": "#000000"
