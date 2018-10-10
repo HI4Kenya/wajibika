@@ -2,16 +2,16 @@ import React from 'react'
 import { createStackNavigator } from 'react-navigation'
 
 import GenericHeader from './widgets/GenericHeader'
-import LoginScreen from './screens/LoginScreen'
-import SearchScreen from './screens/SearchScreen'
-import EuvScreen from './screens/EuvScreen'
-import FacilityScreen from './screens/FacilityScreen'
-import HomeScreen from './screens/HomeScreen'
-import StaffScreen from './screens/StaffScreen'
-import InventoryScreen from './screens/InventoryScreen'
-import StorageAreaScreen from './screens/StorageAreaScreen'
-import ResourcesScreen from './screens/ResourcesScreen'
-import MisScreen from './screens/MisScreen';
+import LoginScreen from './Screens/LoginScreen'
+import SearchScreen from './Screens/SearchScreen'
+import EuvScreen from './Screens/EuvScreen'
+import FacilityScreen from './Screens/FacilityScreen'
+import HomeScreen from './Screens/HomeScreen'
+import StaffScreen from './Screens/StaffScreen'
+import InventoryScreen from './Screens/InventoryScreen'
+import StorageAreaScreen from './Screens/StorageAreaScreen'
+import ResourcesScreen from './Screens/ResourcesScreen'
+import MisScreen from './Screens/MisScreen';
 
 /**
  * Routes <Object>

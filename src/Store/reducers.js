@@ -1,6 +1,12 @@
 import options from '../Api'
 
-const INITIAL_STATE = { options }
+const INITIAL_STATE = {
+  options: options,
+  user: {
+    username: 'admin',
+    password: 'district'
+  }
+}
 
 function loginReducer (state = INITIAL_STATE, action) {
   switch (action.type) {
