@@ -19,7 +19,7 @@ class GenericPicker extends Component {
           
           {
             this.props.options.map( (option, index) => {
-              return <Picker.Item label={option} value={index} />
+              return <Picker.Item key={index} label={option} value={index} />
             } )
           }
         </Picker>

@@ -34,7 +34,7 @@ export default class StorageAreaScreen extends Component {
         {
           this.dataArray.map((parameter, index) => {
             return (
-              <Card style={{ flex: 0 }}>
+              <Card key={index} style={{ flex: 0 }}>
                 <CardItem>
                   <Body>
                     <Text>{parameter}</Text>

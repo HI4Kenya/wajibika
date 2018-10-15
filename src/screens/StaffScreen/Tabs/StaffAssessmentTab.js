@@ -26,7 +26,7 @@ export default class StaffAssessmentTab extends Component {
       {
         this.dataArray.map((question, index) => {
           return (
-            <Card key={index}  style={{ flex: 0 }}>
+            <Card key={index} style={{ flex: 0 }}>
               <CardItem bordered>
                 <Body>
                   <Text>{ `${index+1}. ${question}` }</Text>
