@@ -1,4 +1,4 @@
-import options from '../Api'
+import { options } from '../Api'
 
 const INITIAL_STATE = {
   options: options,

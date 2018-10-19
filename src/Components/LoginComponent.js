@@ -16,17 +16,30 @@ export default class LoginScreen extends Component {
 
   onPressLoginButton() {
 
-    if (this.state.email != '' && this.state.password != '' && this.state.serverUrl != '') {
-      options.hostname=this.state.serverUrl
-      options.port = 80
-    }
+    const { navigateTo, options } = this.props 
+    const LOGIN_URL = `${options.hostname}/api/me`
 
-    console.log(this.state.email + this.state.password)
-
-    return fetch (options.hostname, options)
-      .then(response => response.json())
+    return fetch (LOGIN_URL, options)
+      .then(response => {
+        if (response.ok) {
+          let contentType = response.headers.get('content-type')
+          if(contentType && contentType.includes('application/json')) {
+            return response.json()
+          }
+          throw new TypeError(`Oops, we haven't got JSON!`)
+        }
+        switch (response.status) {
+          case 401:
+            throw new Error('Could not be authorized')
+          case 404:
+            throw new Error('Server could not be found. Check URL')
+          default:
+            throw new Error('There has been an identified problem')
+        }
+      })
       .then(json => {
         console.log(json)
+        navigateTo('SearchScreen')
       })
       .catch(error => {
         console.error(error)

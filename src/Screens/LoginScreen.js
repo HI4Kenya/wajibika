@@ -5,6 +5,8 @@ import { Text } from 'native-base'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import LoginContainer from '../Containers/LoginContainer'
 
+import { options } from '../Api'
+
 export default class LoginScreen extends Component {
 
   render() {
@@ -26,7 +28,7 @@ export default class LoginScreen extends Component {
               source={require('../images/logo.jpg')}
             />
           </View>
-          <LoginContainer navigate={navigate} />
+          <LoginContainer navigate={navigate} options={options} />
 
         </KeyboardAwareScrollView>
       </View>
