@@ -99,9 +99,6 @@ class FacilityScreen extends Component {
       'Laboratory Contact Person'
     ]
 
-
-
-
     return (
 
       <Container>

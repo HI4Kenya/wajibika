@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-native'
 import { Button } from 'native-base'
 
 export default class LoginScreen extends Component {
@@ -10,7 +10,8 @@ export default class LoginScreen extends Component {
     this.state = {
       email: '',
       password: '',
-      serverUrl: ''
+      serverUrl: '',
+      isLoading: false
     }
   }
 
@@ -18,6 +19,8 @@ export default class LoginScreen extends Component {
 
     const { navigateTo, options } = this.props 
     const LOGIN_URL = `${options.hostname}/api/me`
+
+    this.state.isLoading = true
 
     return fetch (LOGIN_URL, options)
       .then(response => {
@@ -47,46 +50,50 @@ export default class LoginScreen extends Component {
   }
 
   render () {
-    return (
-      <View>
-        <TextInput
-          ref='txtServeUrl'
-          style={styles.textInput}
-          placeholder='Server URL'
-          placeholderTextColor = '#5C6D70'
-          keyboardType='default'
-          returnKeyType='next'
-          onSubmitEditing={event => {
-            this.refs.txtServerUrl.focus()
-          }}
-          onChangeText={url => this.setState({ serverUrl: url })}
-        />
-        <TextInput
-          ref='txtEmail'
-          style={styles.textInput}
-          placeholder='Email Address'
-          placeholderTextColor = '#5C6D70'
-          keyboardType='email-address'
-          returnKeyType='next'
-          onSubmitEditing={event => {
-            this.refs.txtPassword.focus()
-          }}
-          onChangeText={email => this.setState({ email })}
-        />
-        <TextInput
-          ref='txtPassword'
-          style={styles.textInput}
-          placeholder='Password'
-          placeholderTextColor = '#5C6D70'
-          returnKeyType='done'
-          secureTextEntry={true}
-          onChangeText={password => this.setState({ password })}
-        />
-        <Button rounded style={{ marginTop: 25, marginLeft: 140 }} onPress={() => this.onPressLoginButton()}>
-          <Text>Login</Text>
-        </Button>
-      </View>
-    )
+
+    if (!this.state.isLoading) {
+      return (
+        <View>
+          <TextInput
+            ref='txtServeUrl'
+            style={styles.textInput}
+            placeholder='Server URL'
+            placeholderTextColor = '#5C6D70'
+            keyboardType='default'
+            returnKeyType='next'
+            onSubmitEditing={event => {
+              this.refs.txtServerUrl.focus()
+            }}
+            onChangeText={url => this.setState({ serverUrl: url })}
+          />
+          <TextInput
+            ref='txtEmail'
+            style={styles.textInput}
+            placeholder='Email Address'
+            placeholderTextColor = '#5C6D70'
+            keyboardType='email-address'
+            returnKeyType='next'
+            onSubmitEditing={event => {
+              this.refs.txtPassword.focus()
+            }}
+            onChangeText={email => this.setState({ email })}
+          />
+          <TextInput
+            ref='txtPassword'
+            style={styles.textInput}
+            placeholder='Password'
+            placeholderTextColor = '#5C6D70'
+            returnKeyType='done'
+            secureTextEntry={true}
+            onChangeText={password => this.setState({ password })}
+          />
+          <Button rounded style={{ marginTop: 25, marginLeft: 140 }} onPress={() => this.onPressLoginButton()}>
+            <Text>Login</Text>
+          </Button>
+        </View>
+      )
+    }
+    return <ActivityIndicator />
   }
 }
 
